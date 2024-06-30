@@ -1,6 +1,7 @@
 import React from "react";
 
-const word = 'test'
+const word = "test";
+const guessedLetters = ["e"];
 
 function HangmanWord() {
   return (
@@ -13,9 +14,21 @@ function HangmanWord() {
         textTransform: "uppercase",
         fontFamily: "monospace",
       }}
-    >{word.split("").map((letter, index) => (
-        <span key={index}>{letter}</span>
-    ))}</div>
+    >
+      {word.split("").map((letter, index) => (
+        <span style={{ borderBottom: ".1em solid black" }}>
+          <span
+            style={{
+              visibility: guessedLetters.includes(letter)
+                ? "visible"
+                : "hidden",
+            }}
+          >
+            {letter}
+          </span>
+        </span>
+      ))}
+    </div>
   );
 }
 
