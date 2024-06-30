@@ -1,5 +1,7 @@
 import React from "react";
 
+const word = 'test'
+
 function HangmanWord() {
   return (
     <div
@@ -11,7 +13,9 @@ function HangmanWord() {
         textTransform: "uppercase",
         fontFamily: "monospace",
       }}
-    >Test</div>
+    >{word.split("").map((letter, index) => (
+        <span key={index}>{letter}</span>
+    ))}</div>
   );
 }
 
