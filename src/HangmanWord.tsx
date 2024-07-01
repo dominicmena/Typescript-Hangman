@@ -18,6 +18,7 @@ function HangmanWord() {
       {word.split("").map((letter, index) => (
         <span style={{ borderBottom: ".1em solid black" }}>
           <span
+          key={index}
             style={{
               visibility: guessedLetters.includes(letter)
                 ? "visible"
