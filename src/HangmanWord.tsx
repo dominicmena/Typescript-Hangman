@@ -1,7 +1,7 @@
 import React from "react";
 
 const word = "test";
-const guessedLetters = ["e"];
+const guessedLetters = ["e", "t"];
 
 function HangmanWord() {
   return (
