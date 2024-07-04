@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./Keyboard.module.css"
+import styles from "./Keyboard.module.css";
 
 const KEYS = [
   "a",
@@ -30,7 +30,19 @@ const KEYS = [
   "z",
 ];
 
-function Keyboard() {
+type KeyboardProps = {
+  disabled?: boolean;
+  activeLetters: string[];
+  inactiveLetters: string[];
+  addGuessedLetter: (letter: string) => void;
+};
+
+function Keyboard({
+  activeLetters,
+  inactiveLetters,
+  addGuessedLetter,
+  disabled = false,
+}: KeyboardProps) {
   return (
     <div
       style={{
@@ -39,13 +51,21 @@ function Keyboard() {
         gap: ".5rem",
       }}
     >
-        {KEYS.map(key => {
-            return (
-                <button className={styles.btn} key={key}>{key}</button>
-            )
-        } 
-           
-        )}
+      {KEYS.map((key) => {
+        const isActive = activeLetters.includes(key);
+        const isInactive = inactiveLetters.includes(key);
+        return (
+          <button
+            onClick={() => addGuessedLetter(key)}
+            className={`${styles.btn} ${isActive ? styles.active : ""}
+            ${isInactive ? styles.inactive : ""}`}
+            key={key}
+            disabled={isInactive || isActive || disabled}
+          >
+            {key}
+          </button>
+        );
+      })}
     </div>
   );
 }
