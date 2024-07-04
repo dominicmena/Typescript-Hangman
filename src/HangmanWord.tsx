@@ -3,7 +3,12 @@ import React from "react";
 const word = "test";
 const guessedLetters = ["e", "t"];
 
-function HangmanWord() {
+type HangmanWordProps = {
+    guessedLetters: string[]
+    wordToGuess: string
+}
+
+function HangmanWord({guessedLetters, wordToGuess}: HangmanWordProps) {
   return (
     <div
       style={{
@@ -15,7 +20,7 @@ function HangmanWord() {
         fontFamily: "monospace",
       }}
     >
-      {word.split("").map((letter, index) => (
+      {wordToGuess.split("").map((letter, index) => (
         <span style={{ borderBottom: ".1em solid black" }}>
           <span
           key={index}
